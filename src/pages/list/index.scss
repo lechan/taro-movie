@@ -1,0 +1,28 @@
+@import "@styles/theme.scss";
+.movie-list {
+  .movie-list-wrap {
+    .movie-item {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      width: 45%;
+      margin: 2%;
+      .movie-poster {
+        width: 100%;
+      }
+      .movie-title {
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 32px;
+        color: #111;
+        height: 64px;
+        @include lamp-clamp(2);
+      }
+    }
+  }
+  .loading-wrap {
+    position: relative;
+    height: 100px;
+    text-align: center;
+  }
+}

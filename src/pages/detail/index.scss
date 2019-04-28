@@ -1,0 +1,27 @@
+.movie-detail-wrap {
+  margin: 50px 0;
+  .movie-poster-wrap {
+    padding: 30px;
+    .movie-poster {
+      width: 100%;
+    }
+  }
+  .movie-info-wrap {
+    padding: 30px;
+    .info-item {
+      display: flex;
+      line-height: 48px;
+      .info-label {
+        display: inline-block;
+        width: 150px;
+        font-size: 28px;
+        color: #666666;
+      }
+      .info-value {
+        flex: 1;
+        font-size: 26px;
+        color: #111;
+      }
+    }
+  }
+}
