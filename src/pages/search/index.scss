@@ -1,0 +1,11 @@
+@import "@styles/theme.scss";
+.title-list {
+  .at-list__item-extra {
+    display: none;
+  }
+  .loading-wrap {
+    position: relative;
+    height: 100px;
+    text-align: center;
+  }
+}

@@ -1,28 +1,48 @@
 @import "@styles/theme.scss";
-.movie-list {
-  .movie-list-wrap {
-    .movie-item {
-      display: inline-block;
-      position: relative;
-      overflow: hidden;
-      width: 45%;
-      margin: 2%;
-      .movie-poster {
-        width: 100%;
-      }
-      .movie-title {
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 32px;
-        color: #111;
-        height: 64px;
-        @include lamp-clamp(2);
-      }
+.list-page {
+  height: 100%;
+  overflow: hidden;
+  .search-wrap {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    .search-button {
+      display: block;
+      margin: 0px 15px 15px 15px;
+      text-align: center;
+      font-size: 30px;
+      border-radius: 10px;
+      background: #eee;
     }
   }
-  .loading-wrap {
-    position: relative;
-    height: 100px;
-    text-align: center;
+  .movie-list {
+    margin-top: 70px;
+    .movie-list-wrap {
+      .movie-item {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        width: 45%;
+        margin: 2%;
+        .movie-poster {
+          width: 100%;
+        }
+        .movie-title {
+          font-weight: normal;
+          font-size: 24px;
+          line-height: 32px;
+          color: #111;
+          height: 64px;
+          @include lamp-clamp(2);
+        }
+      }
+    }
+    .loading-wrap {
+      position: relative;
+      height: 100px;
+      text-align: center;
+    }
   }
 }

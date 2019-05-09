@@ -4,12 +4,10 @@ import { AtActivityIndicator } from 'taro-ui'
 import { connect } from '@tarojs/redux'
 import * as actions from '@actions/list'
 import { getWindowHeight } from '@utils/style'
-
 import './index.scss'
 
 @connect(state => state.list, { ...actions })
 class List extends Component {
-
   config = {
     navigationBarTitleText: '电影列表'
   }
@@ -66,39 +64,50 @@ class List extends Component {
     })
   }
 
+  jumpToSearch = () => {
+    Taro.navigateTo({
+      url: `/pages/search/index`
+    })
+  }
+
   render () {
     const { list, loading } = this.state
-    const height = getWindowHeight()
+    const height = parseInt(getWindowHeight()) - 35 + 'px'
     return (
-      <ScrollView
-        scrollY
-        className='movie-list'
-        style={{ height }}
-        lowerThreshold={80}
-        onScrollToLower={this.loadMore}
-      >
-        <View className='movie-list-wrap'>
-          {list.length > 0 && list.map(item => (
-            <View
-              className='movie-item'
-              key={item.doubanId}
-              onClick={this.jumpToDetail.bind(this, item.doubanId)}
-            >
-              <Image
-                className='movie-poster'
-                src={item.poster}
-                mode='scaleToFill'
-              ></Image>
-              <Text className='movie-title'>{item.title}</Text>
-            </View>
-          ))}
+      <View className='list-page'>
+        <View className='search-wrap' onClick={this.jumpToSearch}>
+          <Text className='search-button'>搜索</Text>
         </View>
-        {loading &&
-          <View className='loading-wrap'>
-            <AtActivityIndicator mode='center' content='加载中...'></AtActivityIndicator>
+        <ScrollView
+          scrollY
+          className='movie-list'
+          style={{ height }}
+          lowerThreshold={80}
+          onScrollToLower={this.loadMore}
+        >
+          <View className='movie-list-wrap'>
+            {list.length > 0 && list.map(item => (
+              <View
+                className='movie-item'
+                key={item.doubanId}
+                onClick={this.jumpToDetail.bind(this, item.doubanId)}
+              >
+                <Image
+                  className='movie-poster'
+                  src={item.poster}
+                  mode='scaleToFill'
+                ></Image>
+                <Text className='movie-title'>{item.title}</Text>
+              </View>
+            ))}
           </View>
-        }
-      </ScrollView>
+          {loading &&
+            <View className='loading-wrap'>
+              <AtActivityIndicator mode='center' content='加载中...'></AtActivityIndicator>
+            </View>
+          }
+        </ScrollView>
+      </View>
     )
   }
 }

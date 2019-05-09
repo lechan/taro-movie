@@ -5,6 +5,7 @@ import { Provider } from '@tarojs/redux'
 import Index from './pages/index'
 import List from './pages/list'
 import Detail from './pages/detail'
+import Search from './pages/search'
 
 import configStore from './store'
 
@@ -23,7 +24,8 @@ class App extends Component {
   config = {
     pages: [
       'pages/list/index',
-      'pages/detail/index'
+      'pages/detail/index',
+      'pages/search/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -49,6 +51,7 @@ class App extends Component {
         <Index />
         <List />
         <Detail />
+        <Search />
       </Provider>
     )
   }

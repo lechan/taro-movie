@@ -1,5 +1,5 @@
-import { MOVIE_LIST } from '@constants/list'
-import { API_MOVIE_LIST } from '@constants/api'
+import { MOVIE_LIST, MOVIE_ITEM } from '@constants/list'
+import { API_MOVIE_LIST, API_MOVIE_ITEM } from '@constants/api'
 import { createAction } from '@utils/redux'
 
 /**
@@ -12,4 +12,12 @@ export const dispatchMovieList = payload => createAction({
   payload
 })
 
-export const dispatchMovie = () => {}
+/**
+ * 电影单项
+ * @param {*} payload
+ */
+export const dispatchMovie = payload => createAction({
+  url: API_MOVIE_ITEM,
+  type: MOVIE_ITEM,
+  payload
+})

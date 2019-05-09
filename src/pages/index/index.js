@@ -7,7 +7,6 @@ import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.scss'
 
-
 @connect(({ counter }) => ({
   counter
 }), (dispatch) => ({
