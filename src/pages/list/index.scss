@@ -6,19 +6,19 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 60px;
-    line-height: 60px;
+    height: 70px;
+    line-height: 70px;
     .search-button {
       display: block;
       margin: 0px 15px 15px 15px;
       text-align: center;
-      font-size: 30px;
-      border-radius: 10px;
+      font-size: 28px;
+      border-radius: 40px;
       background: #eee;
     }
   }
   .movie-list {
-    margin-top: 70px;
+    margin-top: 80px;
     .movie-list-wrap {
       .movie-item {
         display: inline-block;
