@@ -46,7 +46,8 @@ class Detail extends Component {
 
   getMovieItem = () => {
     const { doubanId } = this.state
-    const list = Taro.getStorageSync('movieList').filter(item => {
+    const { movieList, dispatchMovie } = this.props
+    const list = movieList.filter(item => {
       return item.doubanId === doubanId
     })
     let detail = {}
@@ -57,16 +58,13 @@ class Detail extends Component {
         loading: false
       })
     } else {
-      this.props.dispatchMovie({
+      dispatchMovie({
         doubanId
       }).then(res => {
         this.setState({
           detail: res,
           loading: false
         })
-        const movieList = Taro.getStorageSync('movieList')
-        movieList.push(res)
-        Taro.setStorageSync('movieList', movieList)
       })
     }
 

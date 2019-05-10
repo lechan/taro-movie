@@ -16,7 +16,6 @@ class Search extends Component {
     super(props)
     this.state = {
       keyword: '',
-      list: [],
       loading: false
     }
   }
@@ -35,9 +34,8 @@ class Search extends Component {
     this.setState({ loading: true }, () => {
       this.state.loading && this.props.dispatchAssociateList({
         keyword
-      }).then((res) => {
-        this.setState({
-          list: res.list,
+      }).then(res => {
+        res && this.setState({
           loading: false
         })
       })
@@ -57,7 +55,8 @@ class Search extends Component {
   }
 
   render () {
-    const { list, loading } = this.state
+    const { loading } = this.state
+    const { titleList } = this.props
     return (
       <View className='title-list'>
         <AtSearchBar
@@ -66,7 +65,7 @@ class Search extends Component {
           onChange={this.onChange.bind(this)}
         />
         <AtList>
-          {list.length > 0 && list.map(item => (
+          {titleList.length > 0 && titleList.map(item => (
             <AtListItem
               key={item.doubanId}
               title={item.title}

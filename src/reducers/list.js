@@ -7,12 +7,12 @@ const INITIAL_STATE = {
 export default function list(state = INITIAL_STATE, action) {
   switch(action.type) {
     case MOVIE_LIST: {
-      const { movieList } = action.payload
-      return { ...state, list: movieList }
+      const movieList = [...state.movieList, ...action.payload.list]
+      return { ...state, movieList }
     }
     case MOVIE_ITEM: {
-      const { movie } = action.payload
-      return { ...state, data: movie }
+      const movieList = [...state.movieList, ...[action.payload]]
+      return { ...state, movieList }
     }
     default:
       return state

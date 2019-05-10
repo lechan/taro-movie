@@ -7,8 +7,8 @@ const INITIAL_STATE = {
 export default function search(state = INITIAL_STATE, action) {
   switch(action.type) {
     case TITLE_LIST: {
-      const { titleList } = action.payload
-      return { ...state, list: titleList }
+      const { list } = action.payload
+      return { ...state, titleList: list }
     }
     default:
       return state

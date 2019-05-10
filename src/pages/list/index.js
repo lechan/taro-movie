@@ -15,7 +15,6 @@ class List extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      list: [],
       loading: true
     }
     this.pageNo = 1
@@ -35,17 +34,14 @@ class List extends Component {
 
   getMovieData = () => {
     const { pageNo, pageSize } = this
-    let { list } = this.state
     this.setState({ loading: true }, () => {
       this.state.loading && this.props.dispatchMovieList({
         pageNo,
         pageSize
-      }).then((res) => {
-        this.setState({
-          list: [...list, ...res.list],
+      }).then(res => {
+        res && this.setState({
           loading: false
         })
-        Taro.setStorageSync('movieList', [...list, ...res.list])
       })
     })
   }
@@ -71,7 +67,8 @@ class List extends Component {
   }
 
   render () {
-    const { list, loading } = this.state
+    const { loading } = this.state
+    const { movieList } = this.props
     const height = parseInt(getWindowHeight()) - 35 + 'px'
     return (
       <View className='list-page'>
@@ -86,7 +83,7 @@ class List extends Component {
           onScrollToLower={this.loadMore}
         >
           <View className='movie-list-wrap'>
-            {list.length > 0 && list.map(item => (
+            {movieList.length > 0 && movieList.map(item => (
               <View
                 className='movie-item'
                 key={item.doubanId}
