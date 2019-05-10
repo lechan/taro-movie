@@ -3,21 +3,19 @@ import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import jump from '@utils/jump'
 
-import { add, minus, asyncAdd } from '../../actions/counter'
-
 import './index.scss'
 
 @connect(({ counter }) => ({
   counter
 }), (dispatch) => ({
   add () {
-    dispatch(add())
+    dispatch()
   },
   dec () {
-    dispatch(minus())
+    dispatch()
   },
   asyncAdd () {
-    dispatch(asyncAdd())
+    dispatch()
   }
 }))
 class Index extends Component {

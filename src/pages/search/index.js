@@ -5,7 +5,7 @@ import { connect } from '@tarojs/redux'
 import * as actions from '@actions/search'
 import './index.scss'
 
-@connect(state => state.search, { ...actions })
+@connect(() => ({}), { ...actions })
 class Search extends Component {
 
   config = {
@@ -16,6 +16,7 @@ class Search extends Component {
     super(props)
     this.state = {
       keyword: '',
+      list: [],
       loading: false
     }
   }
@@ -27,15 +28,18 @@ class Search extends Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(this.props)
+  }
 
   associate = () => {
     let { keyword } = this.state
     this.setState({ loading: true }, () => {
       this.state.loading && this.props.dispatchAssociateList({
         keyword
-      }).then(res => {
-        res && this.setState({
+      }).then((res) => {
+        this.setState({
+          list: res.list,
           loading: false
         })
       })
@@ -55,8 +59,7 @@ class Search extends Component {
   }
 
   render () {
-    const { loading } = this.state
-    const { titleList } = this.props
+    const { list, loading } = this.state
     return (
       <View className='title-list'>
         <AtSearchBar
@@ -65,7 +68,7 @@ class Search extends Component {
           onChange={this.onChange.bind(this)}
         />
         <AtList>
-          {titleList.length > 0 && titleList.map(item => (
+          {list.length > 0 && list.map(item => (
             <AtListItem
               key={item.doubanId}
               title={item.title}
